@@ -1,0 +1,45 @@
+<?php
+/*
+ * ChatRoom.php
+ * Created on 2013-4-2
+ * JoJo
+ */
+define('ROOT',dirname(dirname(dirname(__FILE__))));
+require_once ROOT.'/lib/dao/StudentDao.php';
+header("Content-Type:text/html; charset=utf-8");
+session_start();
+/*********************OutTimeMsgCheck************************/
+ if(isset($_GET['stu_id'])){
+	$stu_id = $_GET['stu_id'];
+	$name = StudentDao::getName($stu_id);
+ }
+ ?>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>逍遥法外</title>
+	<link type="text/css" rel="stylesheet" href="css/chatRoom.css" />
+</head>
+<body>
+	<div id="header">
+		<h4 id="groupTitle" class="fLeft">逍遥法外</h4>
+		<div id="groupMembers" class="fRight">你好！ <?php echo $name;?></div>
+	</div>
+	
+	<div id="content">
+		<h3 id="aTitle">理解</h3>
+		<div id="tiankong">&nbsp;&nbsp;&nbsp;&nbsp;When he comes to a new school,a student says he looks like a <input type="text" class="aKeyWord" data-rightAnswer="substitude"/> teacher.They start from chapter <input type="text" class="aKeyWord" data-rightAnswer="8"/> and he ask the guy reading conversation number <input type="text" class="aKeyWord" data-rightAnswer="5"/>.The real teacher came from <input type="text" class="aKeyWord" data-rightAnswer="Dixon"/>. Frank has been teaching <input type="text" class="aKeyWord" data-rightAnswer="French"/> class for the past <input type="text" class="aKeyWord" data-rightAnswer="week"/>. When carl come into the room , frank is in the <input type="text" class="aKeyWord" data-rightAnswer="toilet"/>,he decide to play a role as a government worker ,he use a purse with many <input type="text" class="aKeyWord" data-rightAnswer="cards"/> to cheat carl .and he use a <input type="text" class="aKeyWord" data-rightAnswer="blind"/> man to make carl to believe him.
+		</div>
+		<h3 id="aTitle">观后感</h3>
+		<textarea id="qu1" class="aTextareaInput" placeholder="观后感...."></textarea>
+		<a id="sendMyWorks" class="aButton">交作业鸟~</a>
+		<input type="hidden" id="stu_id" name="stu_id" value="<?php echo $stu_id;?>"/><!-- php -->
+	</div>
+	
+	<script type="text/javascript" src="js/lib/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
